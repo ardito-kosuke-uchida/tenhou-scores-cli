@@ -2,12 +2,14 @@ import datetime
 
 import click
 
+from . import __version__
 from . import tenhou_scores
 from .models import GameType
 from .printers import OutputType
 
 
 @click.command()
+@click.version_option(__version__)
 @click.option(
     "-s",
     "--since",
