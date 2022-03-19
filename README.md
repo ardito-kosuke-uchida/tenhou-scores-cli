@@ -65,5 +65,5 @@ $ tenhou-scores -s 2022-03-03 L1275 いっっちじょう | jq .games[0]
 ## インストール
 
 ```sh
-$ pip install git+https://github.com/kuchidaxardito/tenhou-scores-cli.git
+$ pip install git+https://github.com/kuchidaxardito/tenhou-scores-cli.git@0.1.0
 ```
