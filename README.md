@@ -1,6 +1,7 @@
 # tenhou-scores-cli
 
 [![GitHub Super-Linter](https://github.com/kuchidaxardito/tenhou-scores-cli/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
+![pytest](https://github.com/kuchidaxardito/tenhou-scores-cli/actions/workflows/test.yml/badge.svg)
 
 天鳳のスコアをJSONで取得する.
 
