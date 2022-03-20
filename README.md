@@ -15,12 +15,13 @@ $ tenhou-scores --help
 Usage: tenhou-scores [OPTIONS] ROOM [MEMBERS]...
 
 Options:
+  --version                       Show the version and exit.
   -s, --since [%Y-%m-%d]          Date to start from (default: today)
   -d, --days INTEGER              Number of days from since
   -t, --game-type [F1|F2|F3|F4|F5|F6|T1|T2|T3|T4]
-                                  F1 (四般南喰赤) F2 (四般南喰赤) F3 (四般南喰赤) F4 (四般南喰赤)
-                                  F5 (四般南喰赤) F6 (四般南喰赤) T1 (四般南喰赤) T2 (四般南喰赤)
-                                  T3 (四般南喰赤) T4 (四般南喰赤)
+                                  F1 (四般南喰赤) F2 (四般南喰赤祝) F3 (四般南喰) F4 (四般南) F5
+                                  (四般東喰赤) F6 (四般東喰赤祝) T1 (三般南喰赤) T2 (三般南喰赤祝)
+                                  T3 (三般東喰赤) T4 (三般東喰赤祝)
   --output-type [json|csv]        Output type
   -o, --output FILENAME           Output file (default: stdout)
   --help                          Show this message and exit.

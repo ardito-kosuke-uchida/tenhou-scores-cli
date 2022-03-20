@@ -36,7 +36,7 @@ def _log_content(url: str, raises: bool = True) -> Iterator[str]:
             yield line
 
 
-def _condition(game_type, members):
+def _condition(game_type, room, members):
     def __condition(game):
         if game.scores is not None:
             game_members = [s.name for s in game.scores]
@@ -44,11 +44,12 @@ def _condition(game_type, members):
             game_members = [s.name for s in game.shugi_scores]
 
         conditions = [
+            room == game.room,
             set(members) & set(game_members),
         ]
 
         if game_type is not None:
-            conditions.append(game.type == game_type.__doc__)
+            conditions.append(game.type == game_type)
 
         return all(conditions)
 
@@ -58,11 +59,9 @@ def _condition(game_type, members):
 def games(since, days, game_type, room, members):
     games = [models.Game.from_row(row, since) for row in _log_content(_log_url(since))]
     for d in range(1, days + 1):
+        since_ext = since + timedelta(days=d)
         games.extend(
-            map(
-                lambda row: models.Game.from_row(row, since),
-                _log_content(_log_url(since + timedelta(days=d)), raises=False)
-            )
+            map(lambda row: models.Game.from_row(row, since_ext), _log_content(_log_url(since_ext), raises=False))
         )
 
-    return models.Games(games=list(filter(_condition(game_type, members), games)))
+    return models.Games(games=list(filter(_condition(game_type, room, members), games)))
