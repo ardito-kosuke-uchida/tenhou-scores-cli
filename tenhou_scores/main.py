@@ -27,8 +27,8 @@ from .printers import OutputType
 @click.option(
     "-t",
     "--game-type",
-    type=click.Choice(GameType),
-    help="\n".join(map(lambda t: f"{t.name} ({t.__doc__})", GameType)),
+    type=click.Choice(map(lambda t: t.name, GameType)),
+    help="\n".join(map(lambda t: f"{t.name} ({t.value})", GameType)),
 )
 @click.option(
     "--output-type",

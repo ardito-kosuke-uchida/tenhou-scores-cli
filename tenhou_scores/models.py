@@ -8,37 +8,29 @@ from pydantic import BaseModel
 from .config import config
 
 
-class GameType(str, Enum):
+class GameType(Enum):
+    F1 = "四般南喰赤"
+    F2 = "四般南喰赤祝"
+    F3 = "四般南喰"
+    F4 = "四般南"
+    F5 = "四般東喰赤"
+    F6 = "四般東喰赤祝"
+    T1 = "三般南喰赤"
+    T2 = "三般南喰赤祝"
+    T3 = "三般東喰赤"
+    T4 = "三般東喰赤祝"
 
-    """四般南喰赤"""
-    F1 = "F1"
-
-    """四般南喰赤祝"""
-    F2 = "F2"
-
-    """四般南喰"""
-    F3 = "F3"
-
-    """四般南"""
-    F4 = "F4"
-
-    """四般東喰赤"""
-    F5 = "F5"
-
-    """四般東喰赤祝"""
-    F6 = "F6"
-
-    """三般南喰赤"""
-    T1 = "T1"
-
-    """三般南喰赤祝"""
-    T2 = "T2"
-
-    """三般東喰赤"""
-    T3 = "T3"
-
-    """三般東喰赤祝"""
-    T4 = "T4"
+    def __eq__(self, other):
+        """
+        >>> GameType.F4 == "四般南"
+        True
+        >>> GameType.F4 == GameType.F3
+        False
+        """
+        if isinstance(other, str):
+            return self.value == other
+        else:
+            return super().__eq__(other)
 
 
 line_member_pat = re.compile(config.LINE_MEMBER_PAT)

@@ -36,7 +36,7 @@ def _log_content(url: str, raises: bool = True) -> Iterator[str]:
             yield line
 
 
-def _condition(game_type, members):
+def _condition(game_type, room, members):
     def __condition(game):
         if game.scores is not None:
             game_members = [s.name for s in game.scores]
@@ -44,11 +44,12 @@ def _condition(game_type, members):
             game_members = [s.name for s in game.shugi_scores]
 
         conditions = [
+            room == game.room,
             set(members) & set(game_members),
         ]
 
         if game_type is not None:
-            conditions.append(game.type == game_type.__doc__)
+            conditions.append(game.type == game_type)
 
         return all(conditions)
 
@@ -65,4 +66,4 @@ def games(since, days, game_type, room, members):
             )
         )
 
-    return models.Games(games=list(filter(_condition(game_type, members), games)))
+    return models.Games(games=list(filter(_condition(game_type, room, members), games)))
