@@ -61,10 +61,7 @@ def games(since, days, game_type, room, members):
     for d in range(1, days + 1):
         since_ext = since + timedelta(days=d)
         games.extend(
-            map(
-                lambda row: models.Game.from_row(row, since_ext),
-                _log_content(_log_url(since_ext), raises=False)
-            )
+            map(lambda row: models.Game.from_row(row, since_ext), _log_content(_log_url(since_ext), raises=False))
         )
 
     return models.Games(games=list(filter(_condition(game_type, room, members), games)))

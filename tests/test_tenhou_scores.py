@@ -35,7 +35,7 @@ def test__log_content(mocker):
 
 def test_games_1(mocker):
     records = [
-        #tommorow
+        # tommorow
         ["C3630 | 00.01 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
         # today
         ["C3630 | 23:25 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
@@ -63,13 +63,16 @@ def test_games_1(mocker):
         ]
     }
 
-    assert tenhou_scores.games(
-        datetime(2022, 1, 1),
-        0,
-        models.GameType.F2,
-        "C3630",
-        ("A",),
-    ).dict() == expected
+    assert (
+        tenhou_scores.games(
+            datetime(2022, 1, 1),
+            0,
+            models.GameType.F2,
+            "C3630",
+            ("A",),
+        ).dict()
+        == expected
+    )
 
     # assert tenhou_scores.games(
     #     datetime(2022, 1, 1),
@@ -79,9 +82,10 @@ def test_games_1(mocker):
     #     ("はるちゃんぱぱ",),
     # ).dict() == expected
 
+
 def test_games_2(mocker):
     records = [
-        #tommorow
+        # tommorow
         ["C3630 | 00.01 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
         # today
         ["C3630 | 23:25 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
@@ -109,17 +113,21 @@ def test_games_2(mocker):
         ]
     }
 
-    assert tenhou_scores.games(
-        datetime(2022, 1, 1),
-        0,
-        None,
-        "C3630",
-        ("A",),
-    ).dict() == expected
+    assert (
+        tenhou_scores.games(
+            datetime(2022, 1, 1),
+            0,
+            None,
+            "C3630",
+            ("A",),
+        ).dict()
+        == expected
+    )
+
 
 def test_games_3(mocker):
     records = [
-        #tommorow
+        # tommorow
         ["C3630 | 00:01 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
         # today
         ["C3630 | 23:25 | 四般南喰赤祝 | A(+57.0,+2枚) B(+20.0,+6枚) C(-24.0,-3枚) D(-53.0,-5枚)"],
@@ -155,14 +163,17 @@ def test_games_3(mocker):
                 ],
                 "started_at": datetime(2022, 1, 2, 0, 1),
                 "type": "四般南喰赤祝",
-            }
+            },
         ]
     }
 
-    assert tenhou_scores.games(
-        datetime(2022, 1, 1),
-        1,
-        None,
-        "C3630",
-        ("A",),
-    ).dict() == expected
+    assert (
+        tenhou_scores.games(
+            datetime(2022, 1, 1),
+            1,
+            None,
+            "C3630",
+            ("A",),
+        ).dict()
+        == expected
+    )
