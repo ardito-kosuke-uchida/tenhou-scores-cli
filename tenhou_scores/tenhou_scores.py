@@ -59,10 +59,11 @@ def _condition(game_type, room, members):
 def games(since, days, game_type, room, members):
     games = [models.Game.from_row(row, since) for row in _log_content(_log_url(since))]
     for d in range(1, days + 1):
+        since_ext = since + timedelta(days=d)
         games.extend(
             map(
-                lambda row: models.Game.from_row(row, since),
-                _log_content(_log_url(since + timedelta(days=d)), raises=False)
+                lambda row: models.Game.from_row(row, since_ext),
+                _log_content(_log_url(since_ext), raises=False)
             )
         )
 
