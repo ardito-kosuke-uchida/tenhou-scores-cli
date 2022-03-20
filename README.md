@@ -15,6 +15,7 @@ $ tenhou-scores --help
 Usage: tenhou-scores [OPTIONS] ROOM [MEMBERS]...
 
 Options:
+  --version                       Show the version and exit.
   -s, --since [%Y-%m-%d]          Date to start from (default: today)
   -d, --days INTEGER              Number of days from since
   -t, --game-type [F1|F2|F3|F4|F5|F6|T1|T2|T3|T4]
