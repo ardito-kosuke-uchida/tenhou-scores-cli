@@ -2,8 +2,7 @@ import datetime
 
 import click
 
-from . import __version__
-from . import tenhou_scores
+from . import __version__, tenhou_scores
 from .models import GameType
 from .printers import OutputType
 
@@ -27,12 +26,12 @@ from .printers import OutputType
 @click.option(
     "-t",
     "--game-type",
-    type=click.Choice(map(lambda t: t.name, GameType)),
+    type=click.Choice(list(map(lambda t: t.name, GameType))),
     help="\n".join(map(lambda t: f"{t.name} ({t.value})", GameType)),
 )
 @click.option(
     "--output-type",
-    type=click.Choice(OutputType),
+    type=click.Choice(list(OutputType)),
     default="json",
     help="Output type",
 )
