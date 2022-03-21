@@ -58,3 +58,4 @@ jobs:
           PYTHON_ISORT_CONFIG_FILE: pyproject.toml
           PYTHON_FLAKE8_CONFIG_FILE: setup.cfg
           VALIDATE_PYTHON_PYLINT: false
+          VALIDATE_MARKDOWN: false
