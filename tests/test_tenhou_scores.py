@@ -3,8 +3,7 @@ from datetime import datetime
 
 from freezegun import freeze_time
 
-from tenhou_scores import tenhou_scores
-from tenhou_scores import models
+from tenhou_scores import models, tenhou_scores
 
 
 @freeze_time("2022-03-19 23:59:59")
