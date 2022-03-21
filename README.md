@@ -67,5 +67,21 @@ $ tenhou-scores -s 2022-03-03 L1275 いっっちじょう | jq .games[0]
 ## インストール
 
 ```sh
-$ pip install git+https://github.com/kuchidaxardito/tenhou-scores-cli.git@0.1.0
+$ pip install git+https://github.com/kuchidaxardito/tenhou-scores-cli.git@0.1.1
 ```
+
+
+## 制限
+
+* 前年のデータの取得には対応していない
+
+    * 2022年時点でのリクエストで, 2021年のデータをとれない
+
+* 個室のログ取得にだけ対応している
+
+* CSV出力はいまのところ未実装
+
+
+## Contributing
+
+👍
