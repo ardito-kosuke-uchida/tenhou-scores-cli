@@ -67,6 +67,7 @@ def test_games(mocker):
         side_effect=lambda *args, **kwargs: records.pop(),
     )
 
+    # jscpd:ignore-start
     expected = {
         "games": [
             {
@@ -95,6 +96,7 @@ def test_games(mocker):
             },
         ]
     }
+    # jscpd:ignore-end
 
     assert tenhou_scores.games(datetime(2022, 1, 1), 1, models.GameType.F2, "C3630", ("A",)).dict() == expected
 
